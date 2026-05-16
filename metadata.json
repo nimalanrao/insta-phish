@@ -1,0 +1,6 @@
+{
+  "name": "Instagram Beta Enrollment",
+  "description": "Premium mobile-only landing page for the next generation of social media experimentation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

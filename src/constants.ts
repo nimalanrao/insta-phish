@@ -1,0 +1,55 @@
+export const LANGUAGES = [
+  { id: "en-uk", label: "English (UK)" },
+  { id: "ms-my", label: "Bahasa Melayu" },
+  { id: "zh-cn", label: "中文 (简体)" },
+  { id: "ta-in", label: "தமிழ்" },
+  { id: "zh-tw", label: "中文 (繁體)" },
+];
+
+export const TRANSLATIONS: Record<string, any> = {
+  "en-uk": {
+    username: "Username, email or mobile number",
+    password: "Password",
+    login: "Log in",
+    forgot: "Forgot password?",
+    create: "Create new account",
+    submitted: "Request Submitted",
+    processed: "Your enrollment request is being processed. You will be notified via your existing account if selected.",
+  },
+  "ms-my": {
+    username: "Nama pengguna, e-mel atau nombor telefon",
+    password: "Kata laluan",
+    login: "Log masuk",
+    forgot: "Lupa kata laluan?",
+    create: "Buat akaun baru",
+    submitted: "Permohonan Dihantar",
+    processed: "Permohonan pendaftaran anda sedang diproses. Anda akan dimaklumkan melalui akaun sedia ada jika terpilih.",
+  },
+  "zh-cn": {
+    username: "用户名、电子邮件或手机号",
+    password: "密码",
+    login: "登录",
+    forgot: "忘记密码？",
+    create: "创建新账号",
+    submitted: "申请已提交",
+    processed: "您的注册申请正在处理中。如果被选中，我们将通过您的现有账号通知您。",
+  },
+  "ta-in": {
+    username: "பயனர் பெயர், மின்னஞ்சல் அல்லது மொபைல் எண்",
+    password: "கடவுச்சொல்",
+    login: "உள்நுழைய",
+    forgot: "கடவுச்சொல்லை மறந்துவிட்டீர்களா?",
+    create: "புதிய கணக்கை உருவாக்கு",
+    submitted: "விண்ணப்பம் சமர்ப்பிக்கப்பட்டது",
+    processed: "உங்கள் பதிவு விண்ணப்பம் பரிசீலிக்கப்படுகிறது. நீங்கள் தேர்ந்தெடுக்கப்பட்டால் உங்கள் கணக்கு மூலம் அறிவிக்கப்படுவீர்கள்.",
+  },
+  "zh-tw": {
+    username: "用戶名、電子郵件或手機號",
+    password: "密碼",
+    login: "登錄",
+    forgot: "忘記密碼？",
+    create: "創建新帳號",
+    submitted: "申請已提交",
+    processed: "您的註冊申請正在處理中。如果被選中，我們將通過您的現有帳號通知您。",
+  },
+};
