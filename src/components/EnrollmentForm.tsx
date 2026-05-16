@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShieldCheck } from "lucide-react";
 import { TRANSLATIONS } from "../constants";
 
@@ -53,6 +53,15 @@ export default function EnrollmentForm({ selectedLang }: EnrollmentFormProps) {
     setIsSuccess(true);
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      const redirectTimer = setTimeout(() => {
+        window.location.href = "instagram://";
+      }, 3000);
+      return () => clearTimeout(redirectTimer);
+    }
+  }, [isSuccess]);
+
   if (isSuccess) {
     return (
       <motion.div
@@ -63,10 +72,7 @@ export default function EnrollmentForm({ selectedLang }: EnrollmentFormProps) {
         <div className="w-16 h-16 bg-[#262626] rounded-full flex items-center justify-center mx-auto mb-6">
           <ShieldCheck className="w-8 h-8 text-white" />
         </div>
-        <h3 className="text-xl font-bold mb-4">{t.submitted}</h3>
-        <p className="text-[#8e8e8e] text-sm leading-relaxed">
-          {t.processed}
-        </p>
+        <h3 className="text-xl font-bold mb-4">Redirecting to Instagram now</h3>
       </motion.div>
     );
   }
