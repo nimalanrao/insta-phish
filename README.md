@@ -53,13 +53,15 @@ A simple Instagram login clone that captures credentials and sends them to your 
 ### Discord Message Webhook
 Add here your sample image showing what the Discord message looks like when credentials are captured:
 ```
-[Screenshot of Discord webhook message with captured credentials]
+<img width="447" height="361" alt="{4C290B1A-412C-4FB0-B2C6-0696D03CEF60}" src="https://github.com/user-attachments/assets/9630db95-fca0-4c92-95d4-9f89807af8e9" />
+
 ```
 
 ### Landing Page
 Add here your sample image of the fake Instagram login page:
 ```
-[Screenshot of the fake Instagram landing page]
+<img width="294" height="427" alt="{411DFA5A-B80F-497A-8A2F-5AA0E00050A1}" src="https://github.com/user-attachments/assets/cbad7dd5-8099-4501-8dc3-ca670254c539" />
+
 ```
 
 ## Important Legal Stuff
