@@ -1,6 +1,4 @@
-<img width="294" height="427" alt="{411DFA5A-B80F-497A-8A2F-5AA0E00050A1}" src="https://github.com/user-attachments/assets/e3a729b5-eab7-4441-97f6-e2a5b124f8b5" /><div align="center">
 
-</div>
 
 # Fake Instagram Phishing Website (Educational)
 
@@ -58,7 +56,7 @@ Add here your sample image showing what the Discord message looks like when cred
 ### Landing Page
 Add here your sample image of the fake Instagram login page:
 <img width="294" height="427" alt="{411DFA5A-B80F-497A-8A2F-5AA0E00050A1}" src="https://github.com/user-attachments/assets/cbad7dd5-8099-4501-8dc3-ca670254c539" />
-<br></br>
+<br>
 
 ## Important Legal Stuff
 
